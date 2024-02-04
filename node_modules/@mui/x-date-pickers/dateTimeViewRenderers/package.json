@@ -1,0 +1,6 @@
+{
+  "sideEffects": false,
+  "module": "./index.js",
+  "main": "../node/dateTimeViewRenderers/index.js",
+  "types": "./index.d.ts"
+}

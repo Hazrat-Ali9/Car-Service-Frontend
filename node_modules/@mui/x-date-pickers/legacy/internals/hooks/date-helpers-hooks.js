@@ -1,0 +1,37 @@
+import * as React from 'react';
+import { useUtils } from './useUtils';
+import { getMeridiem, convertToMeridiem } from '../utils/time-utils';
+export function useNextMonthDisabled(month, _ref) {
+  var disableFuture = _ref.disableFuture,
+    maxDate = _ref.maxDate,
+    timezone = _ref.timezone;
+  var utils = useUtils();
+  return React.useMemo(function () {
+    var now = utils.dateWithTimezone(undefined, timezone);
+    var lastEnabledMonth = utils.startOfMonth(disableFuture && utils.isBefore(now, maxDate) ? now : maxDate);
+    return !utils.isAfter(lastEnabledMonth, month);
+  }, [disableFuture, maxDate, month, utils, timezone]);
+}
+export function usePreviousMonthDisabled(month, _ref2) {
+  var disablePast = _ref2.disablePast,
+    minDate = _ref2.minDate,
+    timezone = _ref2.timezone;
+  var utils = useUtils();
+  return React.useMemo(function () {
+    var now = utils.dateWithTimezone(undefined, timezone);
+    var firstEnabledMonth = utils.startOfMonth(disablePast && utils.isAfter(now, minDate) ? now : minDate);
+    return !utils.isBefore(firstEnabledMonth, month);
+  }, [disablePast, minDate, month, utils, timezone]);
+}
+export function useMeridiemMode(date, ampm, onChange, selectionState) {
+  var utils = useUtils();
+  var meridiemMode = getMeridiem(date, utils);
+  var handleMeridiemChange = React.useCallback(function (mode) {
+    var timeWithMeridiem = date == null ? null : convertToMeridiem(date, mode, Boolean(ampm), utils);
+    onChange(timeWithMeridiem, selectionState != null ? selectionState : 'partial');
+  }, [ampm, date, onChange, selectionState, utils]);
+  return {
+    meridiemMode: meridiemMode,
+    handleMeridiemChange: handleMeridiemChange
+  };
+}

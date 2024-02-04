@@ -1,0 +1,15 @@
+import { MuiPickersAdapter, TimeView } from '../../models';
+import { DateOrTimeViewWithMeridiem, TimeViewWithMeridiem } from '../models';
+export declare const isTimeView: (view: DateOrTimeViewWithMeridiem) => boolean;
+export declare const isInternalTimeView: (view: DateOrTimeViewWithMeridiem) => view is TimeViewWithMeridiem;
+export type Meridiem = 'am' | 'pm';
+export declare const getMeridiem: <TDate>(date: TDate | null, utils: MuiPickersAdapter<TDate, any>) => Meridiem | null;
+export declare const convertValueToMeridiem: (value: number, meridiem: Meridiem | null, ampm: boolean) => number;
+export declare const convertToMeridiem: <TDate>(time: TDate, meridiem: Meridiem, ampm: boolean, utils: MuiPickersAdapter<TDate, any>) => TDate;
+export declare const getSecondsInDay: <TDate>(date: TDate, utils: MuiPickersAdapter<TDate, any>) => number;
+export declare const createIsAfterIgnoreDatePart: <TDate>(disableIgnoringDatePartForTimeValidation: boolean, utils: MuiPickersAdapter<TDate, any>) => (dateLeft: TDate, dateRight: TDate) => boolean;
+export declare const resolveTimeFormat: (utils: MuiPickersAdapter<any>, { format, views, ampm }: {
+    format?: string | undefined;
+    views: readonly TimeView[];
+    ampm: boolean;
+}) => string;

@@ -1,0 +1,38 @@
+import _extends from "@babel/runtime/helpers/esm/extends";
+import * as React from 'react';
+import { MuiPickersAdapterContext } from '../../LocalizationProvider/LocalizationProvider';
+import { DEFAULT_LOCALE } from '../../locales/enUS';
+export var useLocalizationContext = function useLocalizationContext() {
+  var localization = React.useContext(MuiPickersAdapterContext);
+  if (localization === null) {
+    throw new Error(['MUI: Can not find the date and time pickers localization context.', 'It looks like you forgot to wrap your component in LocalizationProvider.', 'This can also happen if you are bundling multiple versions of the `@mui/x-date-pickers` package'].join('\n'));
+  }
+  if (localization.utils === null) {
+    throw new Error(['MUI: Can not find the date and time pickers adapter from its localization context.', 'It looks like you forgot to pass a `dateAdapter` to your LocalizationProvider.'].join('\n'));
+  }
+  var localeText = React.useMemo(function () {
+    return _extends({}, DEFAULT_LOCALE, localization.localeText);
+  }, [localization.localeText]);
+  return React.useMemo(function () {
+    return _extends({}, localization, {
+      localeText: localeText
+    });
+  }, [localization, localeText]);
+};
+export var useUtils = function useUtils() {
+  return useLocalizationContext().utils;
+};
+export var useDefaultDates = function useDefaultDates() {
+  return useLocalizationContext().defaultDates;
+};
+export var useLocaleText = function useLocaleText() {
+  return useLocalizationContext().localeText;
+};
+export var useNow = function useNow(timezone) {
+  var utils = useUtils();
+  var now = React.useRef();
+  if (now.current === undefined) {
+    now.current = utils.dateWithTimezone(undefined, timezone);
+  }
+  return now.current;
+};

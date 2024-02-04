@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@mui/x-date-pickers/internals/utils/warning.js"],
+  "sourcesContent": ["export const buildDeprecatedPropsWarning = message => {\n  let alreadyWarned = false;\n  if (process.env.NODE_ENV === 'production') {\n    return () => {};\n  }\n  const cleanMessage = Array.isArray(message) ? message.join('\\n') : message;\n  return deprecatedProps => {\n    const deprecatedKeys = Object.entries(deprecatedProps).filter(([, value]) => value !== undefined).map(([key]) => `- ${key}`);\n    if (!alreadyWarned && deprecatedKeys.length > 0) {\n      alreadyWarned = true;\n      console.warn([cleanMessage, 'deprecated props observed:', ...deprecatedKeys].join('\\n'));\n    }\n  };\n};\nexport const buildWarning = (message, gravity = 'warning') => {\n  let alreadyWarned = false;\n  const cleanMessage = Array.isArray(message) ? message.join('\\n') : message;\n  return () => {\n    if (!alreadyWarned) {\n      alreadyWarned = true;\n      if (gravity === 'error') {\n        console.error(cleanMessage);\n      } else {\n        console.warn(cleanMessage);\n      }\n    }\n  };\n};"],
+  "mappings": ";AAcO,IAAM,eAAe,CAAC,SAAS,UAAU,cAAc;AAC5D,MAAI,gBAAgB;AACpB,QAAM,eAAe,MAAM,QAAQ,OAAO,IAAI,QAAQ,KAAK,IAAI,IAAI;AACnE,SAAO,MAAM;AACX,QAAI,CAAC,eAAe;AAClB,sBAAgB;AAChB,UAAI,YAAY,SAAS;AACvB,gBAAQ,MAAM,YAAY;AAAA,MAC5B,OAAO;AACL,gBAAQ,KAAK,YAAY;AAAA,MAC3B;AAAA,IACF;AAAA,EACF;AACF;",
+  "names": []
+}

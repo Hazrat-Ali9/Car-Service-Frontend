@@ -1,0 +1,24 @@
+import * as React from 'react';
+import { MuiPickersAdapter } from '../models';
+import type { PickerSelectionState } from '../internals/hooks/usePicker';
+interface GetHourNumbersOptions<TDate> {
+    ampm: boolean;
+    value: TDate | null;
+    getClockNumberText: (hour: string) => string;
+    isDisabled: (value: number) => boolean;
+    onChange: (value: number, isFinish?: PickerSelectionState) => void;
+    /**
+     * DOM id that the selected option should have
+     * Should only be `undefined` on the server
+     */
+    selectedId: string | undefined;
+    utils: MuiPickersAdapter<TDate>;
+}
+/**
+ * @ignore - internal component.
+ */
+export declare const getHourNumbers: <TDate extends unknown>({ ampm, value, getClockNumberText, isDisabled, selectedId, utils, }: GetHourNumbersOptions<TDate>) => React.JSX.Element[];
+export declare const getMinutesNumbers: <TDate extends unknown>({ utils, value, isDisabled, getClockNumberText, selectedId, }: Omit<GetHourNumbersOptions<TDate>, "value" | "ampm"> & {
+    value: number;
+}) => React.JSX.Element[];
+export {};
