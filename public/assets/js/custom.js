@@ -1,6 +1,6 @@
 jQuery(function ($) {
 	'use strict';
-
+// Custom
     // Start Menu JS
 	$(window).on('scroll', function() {
 		if ($(this).scrollTop() > 50) {
