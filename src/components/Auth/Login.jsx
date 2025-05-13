@@ -2,7 +2,7 @@ import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/aut
 import { auth } from "./firebase.config";
 import toast from "react-hot-toast";
 import { useState } from "react";
-
+// Login jsx
 
 const Login = () => {
     const hideForm = () => {
