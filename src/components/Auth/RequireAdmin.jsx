@@ -5,7 +5,7 @@ import api from "../../util/Api";
 import Loader from "../Loader/Loader";
 import { useNavigate } from "react-router-dom";
 
-
+// Require Admin
 const RequireAdmin = ({ children }) => {
     const [user, loading] = useAuthState(auth);
     const [currentUser, setCurrentUser] = useState({})
