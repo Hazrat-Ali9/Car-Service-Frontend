@@ -9,7 +9,7 @@ const Footer = () => {
                         <div className="row">
                             <div className="col-lg-7">
                                 <div className="copyright-item">
-                                    <p>Copyright @ Wheel Be Alright. Designed By <a href="https://mdtamiz.com/" target="_blank" rel="noreferrer">MT</a></p>
+                                    <p> Copyright Hazrat Ali. All Rights Reserved. <a href="https://hazrat-ali-portfolio.vercel.app/" target="_blank" rel="noreferrer">Hazrat Ali</a></p>
                                 </div>
                             </div>
                             <div className="col-lg-5">
