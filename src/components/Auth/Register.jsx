@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "./firebase.config";
 import { toast } from "react-hot-toast";
 import api from "../../util/Api";
-
+// Register jsx
 const Register = () => {
     const hideForm = () => {
         const form = document.getElementById("signUpModal");
