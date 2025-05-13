@@ -9,7 +9,7 @@ const Address = () => {
                         <div className="address-item">
                             <i className="bx bxs-paper-plane" />
                             <h3>Location</h3>
-                            <span>8 Wesley ave, Hertford Hertofrshire, SG13 8FL</span>
+                            <span>Dhaka,Bangladesh</span>
                         </div>
                     </div>
                     <div className="col-sm-6 col-lg-4">
