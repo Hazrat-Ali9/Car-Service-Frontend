@@ -16,7 +16,7 @@ const Address = () => {
                         <div className="address-item">
                             <i className="bx bxs-phone-call" />
                             <h3>Call Us</h3>
-                            <a href="tel:+07754125498">+01581610293</a>
+                            <a href="tel:+01581610293">+01581610293</a>
                         </div>
                     </div>
                     <div className="col-sm-6 offset-sm-3 offset-lg-0 col-lg-4">
